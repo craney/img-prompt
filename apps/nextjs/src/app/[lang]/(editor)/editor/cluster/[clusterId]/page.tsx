@@ -28,7 +28,7 @@ export default async function EditorClusterPage({
 }: EditorClusterProps) {
   const user = await getCurrentUser();
   if (!user) {
-    redirect(authOptions?.pages?.signIn ?? "/login-clerk");
+    redirect(authOptions?.pages?.signIn ?? "/login");
   }
 
   // console.log("EditorClusterPage user:" + user.id + "params:", params);

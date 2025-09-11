@@ -2,6 +2,8 @@ import "server-only";
 
 import { cookies } from "next/headers";
 import { createTRPCProxyClient, loggerLink, TRPCClientError } from "@trpc/client";
+import { getServerSession } from "next-auth";
+import { authOptions } from "@saasfly/auth";
 
 import { AppRouter } from "@saasfly/api";
 
@@ -11,17 +13,15 @@ import { callProcedure } from "@trpc/server";
 import { TRPCErrorResponse } from "@trpc/server/rpc";
 import { cache } from "react";
 import { appRouter } from "../../../../packages/api/src/root";
-import { auth } from "@clerk/nextjs/server";
-
-type AuthObject = Awaited<ReturnType<typeof auth>>;
 
 export const createTRPCContext = async (opts: {
   headers: Headers;
-  auth: AuthObject;
+  session: any;
 // eslint-disable-next-line @typescript-eslint/require-await
 }) => {
   return {
-    userId: opts.auth.userId,
+    userId: opts.session?.user?.id,
+    user: opts.session?.user,
     ...opts,
   };
 };
@@ -32,12 +32,13 @@ export const createTRPCContext = async (opts: {
  * handling a tRPC call from a React Server Component.
  */
 const createContext = cache(async () => {
+  const session = await getServerSession(authOptions);
   return createTRPCContext({
     headers: new Headers({
       cookie: cookies().toString(),
       "x-trpc-source": "rsc",
     }),
-    auth: await auth(),
+    session,
   });
 });
 
