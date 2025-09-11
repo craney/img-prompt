@@ -123,5 +123,62 @@
     "settings": "设置",
     "sign_out": "登出",
     "": ""
+  },
+  "imageprompt": {
+    "meta": {
+      "title": "ImagePrompt.org - 创建更好的AI艺术",
+      "description": "激发想法，增强图像提示词，创作杰作"
+    },
+    "hero": {
+      "title_prefix": "使用",
+      "title_highlight": "Image Prompt",
+      "title_suffix": "创建更好的AI艺术",
+      "subtitle": "激发想法，增强图像提示词，创作杰作",
+      "cta_primary": "立即试用！",
+      "cta_secondary": "教程"
+    },
+    "features": [
+      {
+        "id": "image_to_prompt",
+        "title": "图片转提示词",
+        "description": "将图片转换为提示词来生成您自己的图像",
+        "icon": "Image"
+      },
+      {
+        "id": "magic_enhance",
+        "title": "魔法增强",
+        "description": "将简单文本转化为详细、描述性的图像提示词",
+        "icon": "Wand2"
+      },
+      {
+        "id": "ai_describe",
+        "title": "AI图像描述",
+        "description": "让AI帮助您详细理解和分析任何图像",
+        "icon": "Eye"
+      },
+      {
+        "id": "ai_generator",
+        "title": "AI图像生成器",
+        "description": "使用AI驱动的生成将您的图像提示词转化为惊艳的视觉效果",
+        "icon": "Sparkles"
+      }
+    ],
+    "tools": {
+      "title": "AI驱动的图像提示词工具",
+      "subtitle": "涵盖您图像创作之旅各个方面的完整AI工具套件"
+    },
+    "interested": {
+      "prefix": "您可能感兴趣的内容：",
+      "links": [
+        {
+          "text": "什么是图像提示词？",
+          "href": "/what-is-image-prompt"
+        },
+        {
+          "text": "如何写出有效的图像提示词？",
+          "href": "/how-to-write-effective-prompt"
+        }
+      ]
+    }
   }
 }

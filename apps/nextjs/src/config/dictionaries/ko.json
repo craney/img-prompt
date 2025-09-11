@@ -124,5 +124,62 @@
     "settings": "설정",
     "sign_out": "로그아웃",
     "": ""
+  },
+  "imageprompt": {
+    "meta": {
+      "title": "ImagePrompt.org - 더 나은 AI 아트 창작",
+      "description": "아이디어 영감, 이미지 프롬프트 향상, 걸작 창조"
+    },
+    "hero": {
+      "title_prefix": "",
+      "title_highlight": "Image Prompt",
+      "title_suffix": "로 더 나은 AI 아트 창작하기",
+      "subtitle": "아이디어 영감, 이미지 프롬프트 향상, 걸작 창조",
+      "cta_primary": "지금 시도해보세요!",
+      "cta_secondary": "튜토리얼"
+    },
+    "features": [
+      {
+        "id": "image_to_prompt",
+        "title": "이미지를 프롬프트로",
+        "description": "이미지를 프롬프트로 변환하여 나만의 이미지 생성",
+        "icon": "Image"
+      },
+      {
+        "id": "magic_enhance",
+        "title": "매직 향상",
+        "description": "간단한 텍스트를 상세하고 설명적인 이미지 프롬프트로 변환",
+        "icon": "Wand2"
+      },
+      {
+        "id": "ai_describe",
+        "title": "AI 이미지 설명",
+        "description": "AI가 모든 이미지를 자세히 이해하고 분석하도록 도움",
+        "icon": "Eye"
+      },
+      {
+        "id": "ai_generator",
+        "title": "AI 이미지 생성기",
+        "description": "AI 기반 생성으로 이미지 프롬프트를 놀라운 비주얼로 변환",
+        "icon": "Sparkles"
+      }
+    ],
+    "tools": {
+      "title": "AI 기반 이미지 프롬프트 도구",
+      "subtitle": "이미지 창작 여정의 모든 측면을 다루는 완전한 AI 도구 모음"
+    },
+    "interested": {
+      "prefix": "관심 있을 만한 내용:",
+      "links": [
+        {
+          "text": "이미지 프롬프트란 무엇인가요?",
+          "href": "/what-is-image-prompt"
+        },
+        {
+          "text": "효과적인 이미지 프롬프트 작성 방법?",
+          "href": "/how-to-write-effective-prompt"
+        }
+      ]
+    }
   }
 }

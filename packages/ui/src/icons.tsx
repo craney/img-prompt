@@ -17,8 +17,10 @@ export const Copy = Lucide.Copy;
 export const CopyDone = Lucide.ClipboardCheck;
 export const Dashboard = Lucide.Activity;
 export const Ellipsis = Lucide.MoreVertical;
+export const Eye = Lucide.Eye;
 export const Help = Lucide.HelpCircle;
 export const Heart = Lucide.Heart;
+export const Image = Lucide.Image;
 export const Key = Lucide.Key;
 export const Languages = Lucide.Languages;
 export const Laptop = Lucide.Laptop;
@@ -32,12 +34,14 @@ export const Rocket = Lucide.Rocket;
 export const Search = Lucide.Search;
 export const Settings = Lucide.Settings;
 export const ShieldCheck = Lucide.ShieldCheck;
+export const Sparkles = Lucide.Sparkles;
 export const Spinner = Lucide.Loader2;
 export const Sun = Lucide.SunMedium;
 export const ThumbsUp = Lucide.ThumbsUp;
 export const Trash = Lucide.Trash;
 export const Twitter = Lucide.Twitter;
 export const User = Lucide.User;
+export const Wand2 = Lucide.Wand2;
 export const Warning = Lucide.AlertTriangle;
 
 export const System: Icon = (props) => (

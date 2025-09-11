@@ -23,9 +23,11 @@ export function MobileNav({ items, children, menuItemClick }: MobileNavProps) {
       )}
     >
       <div className="relative z-20 grid gap-6 rounded-md bg-popover p-4 text-popover-foreground shadow-md">
-        <Link href="/" className="flex items-center space-x-2">
-          <Icons.Logo />
-          <span className="font-bold">{siteConfig.name}</span>
+        <Link href="/" className="flex items-center space-x-3 group">
+          <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-purple-500 to-purple-600 flex items-center justify-center shadow-lg">
+            <Icons.Image className="w-5 h-5 text-white" />
+          </div>
+          <span className="font-bold text-lg group-hover:text-purple-600 transition-colors">ImgPrompt.He</span>
         </Link>
         <nav className="grid grid-flow-row auto-rows-max text-sm">
           {items.map((item, index) => (

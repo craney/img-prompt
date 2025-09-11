@@ -123,5 +123,62 @@
     "settings": "設定",
     "sign_out": "サインアウト",
     "": ""
+  },
+  "imageprompt": {
+    "meta": {
+      "title": "ImagePrompt.org - より良いAIアートの作成",
+      "description": "アイデアを刺激し、画像プロンプトを強化し、傑作を作成"
+    },
+    "hero": {
+      "title_prefix": "",
+      "title_highlight": "Image Prompt",
+      "title_suffix": "でより良いAIアートを作成しよう",
+      "subtitle": "アイデアを刺激し、画像プロンプトを強化し、傑作を作成",
+      "cta_primary": "今すぐ試してみよう！",
+      "cta_secondary": "チュートリアル"
+    },
+    "features": [
+      {
+        "id": "image_to_prompt",
+        "title": "画像からプロンプトへ",
+        "description": "画像をプロンプトに変換して独自の画像を生成",
+        "icon": "Image"
+      },
+      {
+        "id": "magic_enhance",
+        "title": "マジックエンハンス",
+        "description": "シンプルなテキストを詳細で描写的な画像プロンプトに変換",
+        "icon": "Wand2"
+      },
+      {
+        "id": "ai_describe",
+        "title": "AI画像説明",
+        "description": "AIが任意の画像を詳細に理解し分析するのを支援",
+        "icon": "Eye"
+      },
+      {
+        "id": "ai_generator",
+        "title": "AI画像ジェネレーター",
+        "description": "AIパワーで画像プロンプトを素晴らしいビジュアルに変換",
+        "icon": "Sparkles"
+      }
+    ],
+    "tools": {
+      "title": "AIパワー画像プロンプトツール",
+      "subtitle": "画像作成のあらゆる側面をカバーする完全なAIツールスイート"
+    },
+    "interested": {
+      "prefix": "関心があるかもしれない内容：",
+      "links": [
+        {
+          "text": "画像プロンプトとは何ですか？",
+          "href": "/what-is-image-prompt"
+        },
+        {
+          "text": "効果的な画像プロンプトの書き方？",
+          "href": "/how-to-write-effective-prompt"
+        }
+      ]
+    }
   }
 }

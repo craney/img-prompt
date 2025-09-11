@@ -123,5 +123,62 @@
     "settings": "Settings",
     "sign_out": "Sign out",
     "": ""
+  },
+  "imageprompt": {
+    "meta": {
+      "title": "ImagePrompt.org - Create Better AI Art",
+      "description": "Inspire ideas, Enhance image prompt, Create masterpieces"
+    },
+    "hero": {
+      "title_prefix": "Create Better AI Art with",
+      "title_highlight": "Image Prompt",
+      "title_suffix": "",
+      "subtitle": "Inspire ideas, Enhance image prompt, Create masterpieces",
+      "cta_primary": "Try it now!",
+      "cta_secondary": "Tutorials"
+    },
+    "features": [
+      {
+        "id": "image_to_prompt",
+        "title": "Image to Prompt",
+        "description": "Convert Image to Prompt to generate your own image",
+        "icon": "Image"
+      },
+      {
+        "id": "magic_enhance",
+        "title": "Magic Enhance",
+        "description": "Transform simple text into detailed, descriptive image prompt",
+        "icon": "Wand2"
+      },
+      {
+        "id": "ai_describe",
+        "title": "AI Describe Image",
+        "description": "Let AI help you understand and analyze any image in detail",
+        "icon": "Eye"
+      },
+      {
+        "id": "ai_generator",
+        "title": "AI Image Generator",
+        "description": "Transform your image prompt into stunning visuals with AI-powered generation",
+        "icon": "Sparkles"
+      }
+    ],
+    "tools": {
+      "title": "AI Powered Image Prompt Tools",
+      "subtitle": "A complete suite of AI tools covering every aspect of your image creation journey"
+    },
+    "interested": {
+      "prefix": "You may be interested in:",
+      "links": [
+        {
+          "text": "What is an Image Prompt?",
+          "href": "/what-is-image-prompt"
+        },
+        {
+          "text": "How to Write Effective Image Prompt?",
+          "href": "/how-to-write-effective-prompt"
+        }
+      ]
+    }
   }
 }
