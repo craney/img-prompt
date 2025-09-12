@@ -179,6 +179,59 @@
           "href": "/how-to-write-effective-prompt"
         }
       ]
+    },
+    "imageToPrompt": {
+      "meta": {
+        "title": "免费图片转提示词生成器 - ImgPrompt.He",
+        "description": "将图片转换为详细的AI提示词。上传您的图片，为Flux、Midjourney、Stable Diffusion等生成优化的提示词。"
+      },
+      "header": {
+        "title": "免费图片转提示词生成器",
+        "subtitle": "将图片转换为提示词来生成您自己的图像"
+      },
+      "tabs": {
+        "imageToPrompt": "图片转提示词",
+        "textToPrompt": "文本转提示词"
+      },
+      "upload": {
+        "dragText": "上传照片或拖拽到此处",
+        "formatText": "支持PNG、JPG或WEBP格式，最大5MB",
+        "uploadButton": "上传图片",
+        "urlPlaceholder": "输入图片URL"
+      },
+      "preview": {
+        "title": "图片预览",
+        "placeholder": "您的图片将在这里显示"
+      },
+      "models": {
+        "general": {
+          "title": "通用图像提示词",
+          "description": "对图像的自然语言描述"
+        },
+        "flux": {
+          "title": "Flux",
+          "description": "为最先进的Flux AI模型优化，简洁的自然语言"
+        },
+        "midjourney": {
+          "title": "Midjourney",
+          "description": "专为Midjourney生成定制，包含Midjourney参数"
+        },
+        "stableDiffusion": {
+          "title": "Stable Diffusion",
+          "description": "为Stable Diffusion模型格式化"
+        }
+      },
+      "generator": {
+        "languageLabel": "提示词语言：",
+        "generateButton": "生成提示词",
+        "version": "版本：NEXT",
+        "languages": {
+          "english": "English",
+          "chinese": "中文",
+          "japanese": "日本語",
+          "korean": "한국어"
+        }
+      }
     }
   }
 }

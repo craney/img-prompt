@@ -13,6 +13,7 @@ const publicRoute = [
   "/(\\w{2}/)?docs(.*)",
   "/(\\w{2}/)?blog(.*)",
   "/(\\w{2}/)?pricing(.*)",
+  "/(\\w{2}/)?image-to-prompt(.*)", // image-to-prompt tool page
   "^/\\w{2}$", // root with locale
 ];
 

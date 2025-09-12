@@ -179,6 +179,59 @@
           "href": "/how-to-write-effective-prompt"
         }
       ]
+    },
+    "imageToPrompt": {
+      "meta": {
+        "title": "Free Image to Prompt Generator - ImgPrompt.He",
+        "description": "Convert images to detailed AI prompts. Upload your image and generate optimized prompts for Flux, Midjourney, Stable Diffusion and more."
+      },
+      "header": {
+        "title": "Free Image to Prompt Generator",
+        "subtitle": "Convert Image to Prompt to generate your own image"
+      },
+      "tabs": {
+        "imageToPrompt": "Image to Prompt",
+        "textToPrompt": "Text to Prompt"
+      },
+      "upload": {
+        "dragText": "Upload a photo or drag and drop",
+        "formatText": "PNG, JPG, or WEBP up to 5MB",
+        "uploadButton": "Upload Image",
+        "urlPlaceholder": "Input Image URL"
+      },
+      "preview": {
+        "title": "Image Preview",
+        "placeholder": "Your image will show here"
+      },
+      "models": {
+        "general": {
+          "title": "General Image Prompt",
+          "description": "Natural language description of the image"
+        },
+        "flux": {
+          "title": "Flux",
+          "description": "Optimized for state-of-the-art Flux AI models, concise natural language"
+        },
+        "midjourney": {
+          "title": "Midjourney",
+          "description": "Tailored for Midjourney generation with Midjourney parameters"
+        },
+        "stableDiffusion": {
+          "title": "Stable Diffusion",
+          "description": "Formatted for Stable Diffusion models"
+        }
+      },
+      "generator": {
+        "languageLabel": "Prompt Language:",
+        "generateButton": "Generate Prompt",
+        "version": "Version: NEXT",
+        "languages": {
+          "english": "English",
+          "chinese": "中文",
+          "japanese": "日本語",
+          "korean": "한국어"
+        }
+      }
     }
   }
 }

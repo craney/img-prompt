@@ -41,6 +41,12 @@ export const ThumbsUp = Lucide.ThumbsUp;
 export const Trash = Lucide.Trash;
 export const Twitter = Lucide.Twitter;
 export const User = Lucide.User;
+export const Upload = Lucide.Upload;
+export const ImageIcon = Lucide.ImageIcon;
+export const FileText = Lucide.FileText;
+export const CheckCircle = Lucide.CheckCircle;
+export const Palette = Lucide.Palette;
+export const Zap = Lucide.Zap;
 export const Wand2 = Lucide.Wand2;
 export const Warning = Lucide.AlertTriangle;
 
