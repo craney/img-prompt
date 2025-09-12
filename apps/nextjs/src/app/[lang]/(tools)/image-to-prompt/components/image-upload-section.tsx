@@ -74,12 +74,24 @@ export function ImageUploadSection({ dict, onImageUpload }: ImageUploadSectionPr
     if (!imageUrl) return;
     
     try {
-      // 这里可以添加URL验证和预处理逻辑
-      console.log("Uploading from URL:", imageUrl);
-      // TODO: 实现URL图片上传功能
+      // Fetch image from URL
+      const response = await fetch(imageUrl);
+      if (!response.ok) {
+        throw new Error(`Failed to fetch image: ${response.statusText}`);
+      }
+      
+      const blob = await response.blob();
+      const fileName = imageUrl.split("/").pop() || "image.jpg";
+      const file = new File([blob], fileName, { type: blob.type });
+      
+      if (validateFile(file)) {
+        setUploadedFile(file);
+        onImageUpload?.(file);
+        setImageUrl(""); // Clear the input after successful upload
+      }
     } catch (error) {
       console.error("Error uploading from URL:", error);
-      alert("Error uploading image from URL");
+      alert(`Error uploading image from URL: ${error instanceof Error ? error.message : 'Unknown error'}`);
     }
   };
 

@@ -18,7 +18,6 @@ interface ImageToPromptClientProps {
       };
       tabs: {
         imageToPrompt: string;
-        textToPrompt: string;
       };
       upload: {
         dragText: string;
