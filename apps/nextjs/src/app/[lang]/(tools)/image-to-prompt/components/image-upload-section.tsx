@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useCallback, useRef, ChangeEvent, DragEvent } from "react";
+import { useState, useCallback, useRef, ChangeEvent, DragEvent, useEffect } from "react";
 import { Button } from "@saasfly/ui/button";
 import { Input } from "@saasfly/ui/input";
 import * as Icons from "@saasfly/ui/icons";
@@ -20,6 +20,10 @@ export function ImageUploadSection({ dict, onImageUpload }: ImageUploadSectionPr
   const [isDragActive, setIsDragActive] = useState(false);
   const [imageUrl, setImageUrl] = useState("");
   const [uploadedFile, setUploadedFile] = useState<File | null>(null);
+  const [isUploadingToCoze, setIsUploadingToCoze] = useState(false);
+  const [cozeFileId, setCozeFileId] = useState<string | null>(null);
+  const [uploadStatus, setUploadStatus] = useState<"idle" | "uploading" | "success" | "error">("idle");
+  const [uploadMessage, setUploadMessage] = useState("");
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   const validateFile = (file: File): boolean => {
@@ -37,6 +41,60 @@ export function ImageUploadSection({ dict, onImageUpload }: ImageUploadSectionPr
     }
     
     return true;
+  };
+
+  // Upload file to Coze
+  const uploadToCoze = async (file: File) => {
+    setIsUploadingToCoze(true);
+    setUploadStatus("uploading");
+    setUploadMessage("Uploading to Coze...");
+    
+    try {
+      const formData = new FormData();
+      formData.append("file", file);
+
+      const response = await fetch("/api/coze/upload", {
+        method: "POST",
+        body: formData,
+      });
+
+      // Check if response is JSON
+      const contentType = response.headers.get("content-type");
+      if (!contentType || !contentType.includes("application/json")) {
+        const errorText = await response.text();
+        throw new Error(`Server returned non-JSON response: ${errorText.substring(0, 100)}...`);
+      }
+
+      const result = await response.json();
+
+      if (!response.ok) {
+        let errorMessage = result.details || result.error || "Failed to upload file to Coze";
+        // Handle specific Coze API errors
+        if (result.code === 700012006) {
+          errorMessage = "Coze API error: Access token is invalid. Please check your API configuration.";
+        }
+        throw new Error(errorMessage);
+      }
+
+      console.log("File uploaded to Coze successfully:", result);
+      setCozeFileId(result.fileId);
+      
+      // Print fileId to console as requested
+      console.log("Coze File ID:", result.fileId);
+      
+      setUploadStatus("success");
+      setUploadMessage(`File uploaded to Coze successfully! File ID: ${result.fileId}`);
+      
+      return result.fileId;
+    } catch (error) {
+      console.error("Error uploading file to Coze:", error);
+      setUploadStatus("error");
+      setUploadMessage(`Error uploading file to Coze: ${error instanceof Error ? error.message : 'Unknown error'}`);
+      
+      throw error;
+    } finally {
+      setIsUploadingToCoze(false);
+    }
   };
 
   const handleDrop = useCallback((e: DragEvent<HTMLDivElement>) => {
@@ -74,6 +132,9 @@ export function ImageUploadSection({ dict, onImageUpload }: ImageUploadSectionPr
     if (!imageUrl) return;
     
     try {
+      setUploadStatus("uploading");
+      setUploadMessage("Fetching image from URL...");
+      
       // Fetch image from URL
       const response = await fetch(imageUrl);
       if (!response.ok) {
@@ -91,9 +152,29 @@ export function ImageUploadSection({ dict, onImageUpload }: ImageUploadSectionPr
       }
     } catch (error) {
       console.error("Error uploading from URL:", error);
+      setUploadStatus("error");
+      setUploadMessage(`Error uploading image from URL: ${error instanceof Error ? error.message : 'Unknown error'}`);
       alert(`Error uploading image from URL: ${error instanceof Error ? error.message : 'Unknown error'}`);
     }
   };
+
+  // Automatically upload to Coze when a file is selected
+  useEffect(() => {
+    if (uploadedFile && !cozeFileId && uploadStatus === "idle") {
+      uploadToCoze(uploadedFile).catch((error) => {
+        console.error("Auto upload to Coze failed:", error);
+      });
+    }
+  }, [uploadedFile, cozeFileId, uploadStatus]);
+
+  // Reset status when a new file is selected
+  useEffect(() => {
+    if (uploadedFile) {
+      setCozeFileId(null);
+      setUploadStatus("idle");
+      setUploadMessage("");
+    }
+  }, [uploadedFile]);
 
   return (
     <div className="space-y-6">
@@ -148,10 +229,17 @@ export function ImageUploadSection({ dict, onImageUpload }: ImageUploadSectionPr
         />
         <Button 
           onClick={handleUrlUpload} 
-          disabled={!imageUrl}
+          disabled={!imageUrl || uploadStatus === "uploading"}
           className="bg-purple-600 hover:bg-purple-700 text-white"
         >
-          Upload
+          {uploadStatus === "uploading" ? (
+            <>
+              <Icons.Spinner className="w-4 h-4 mr-2 animate-spin" />
+              Uploading...
+            </>
+          ) : (
+            "Upload"
+          )}
         </Button>
       </div>
 
@@ -164,6 +252,34 @@ export function ImageUploadSection({ dict, onImageUpload }: ImageUploadSectionPr
               Uploaded: {uploadedFile.name} ({(uploadedFile.size / 1024 / 1024).toFixed(2)} MB)
             </span>
           </div>
+          
+          {/* Upload Status */}
+          {uploadMessage && (
+            <div className={`mt-2 text-sm ${
+              uploadStatus === "success" ? "text-green-600 dark:text-green-300" :
+              uploadStatus === "error" ? "text-red-600 dark:text-red-300" :
+              "text-blue-600 dark:text-blue-300"
+            }`}>
+              {uploadMessage}
+            </div>
+          )}
+          
+          {cozeFileId && (
+            <div className="mt-2 flex items-center gap-2">
+              <span className="text-sm text-blue-800 dark:text-blue-200">
+                Coze File ID: {cozeFileId}
+              </span>
+              <Button 
+                variant="outline" 
+                size="sm"
+                onClick={() => navigator.clipboard.writeText(cozeFileId)}
+                className="border-blue-200 text-blue-600 hover:bg-blue-50 h-6 px-2 text-xs"
+              >
+                <Icons.Copy className="w-3 h-3 mr-1" />
+                Copy
+              </Button>
+            </div>
+          )}
         </div>
       )}
     </div>
