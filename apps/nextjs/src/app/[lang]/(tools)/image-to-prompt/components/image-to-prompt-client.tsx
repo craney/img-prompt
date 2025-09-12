@@ -66,6 +66,7 @@ export function ImageToPromptClient({ dict }: ImageToPromptClientProps) {
   const [uploadedImage, setUploadedImage] = useState<File | null>(null);
   const [selectedModel, setSelectedModel] = useState("general");
   const [promptLanguage, setPromptLanguage] = useState("english");
+  const [cozeFileId, setCozeFileId] = useState<string | null>(null); // 添加cozeFileId状态
 
   return (
     <div className="container mx-auto px-4 py-8 max-w-6xl">
@@ -81,6 +82,7 @@ export function ImageToPromptClient({ dict }: ImageToPromptClientProps) {
         <ImageUploadSection 
           dict={dict.imageToPrompt.upload}
           onImageUpload={setUploadedImage}
+          onCozeFileIdChange={setCozeFileId} // 传递cozeFileId更新函数
         />
 
         {/* 右侧预览区域 */}
@@ -104,6 +106,7 @@ export function ImageToPromptClient({ dict }: ImageToPromptClientProps) {
         promptLanguage={promptLanguage}
         onLanguageChange={setPromptLanguage}
         uploadedImage={uploadedImage}
+        cozeFileId={cozeFileId} // 传递cozeFileId
       />
     </div>
   );

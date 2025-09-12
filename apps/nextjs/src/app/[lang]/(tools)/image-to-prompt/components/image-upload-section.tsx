@@ -14,9 +14,10 @@ interface ImageUploadSectionProps {
     urlPlaceholder: string;
   };
   onImageUpload?: (file: File | null) => void;
+  onCozeFileIdChange?: (fileId: string | null) => void; // 添加onCozeFileIdChange属性
 }
 
-export function ImageUploadSection({ dict, onImageUpload }: ImageUploadSectionProps) {
+export function ImageUploadSection({ dict, onImageUpload, onCozeFileIdChange }: ImageUploadSectionProps) {
   const [isDragActive, setIsDragActive] = useState(false);
   const [imageUrl, setImageUrl] = useState("");
   const [uploadedFile, setUploadedFile] = useState<File | null>(null);
@@ -78,6 +79,7 @@ export function ImageUploadSection({ dict, onImageUpload }: ImageUploadSectionPr
 
       console.log("File uploaded to Coze successfully:", result);
       setCozeFileId(result.fileId);
+      onCozeFileIdChange?.(result.fileId); // 通知父组件cozeFileId的变化
       
       // Print fileId to console as requested
       console.log("Coze File ID:", result.fileId);
@@ -90,6 +92,9 @@ export function ImageUploadSection({ dict, onImageUpload }: ImageUploadSectionPr
       console.error("Error uploading file to Coze:", error);
       setUploadStatus("error");
       setUploadMessage(`Error uploading file to Coze: ${error instanceof Error ? error.message : 'Unknown error'}`);
+      
+      // 通知父组件cozeFileId为null
+      onCozeFileIdChange?.(null);
       
       throw error;
     } finally {
@@ -173,8 +178,9 @@ export function ImageUploadSection({ dict, onImageUpload }: ImageUploadSectionPr
       setCozeFileId(null);
       setUploadStatus("idle");
       setUploadMessage("");
+      onCozeFileIdChange?.(null); // 通知父组件cozeFileId为null
     }
-  }, [uploadedFile]);
+  }, [uploadedFile, onCozeFileIdChange]);
 
   return (
     <div className="space-y-6">

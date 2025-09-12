@@ -16,6 +16,7 @@ const publicRoute = [
   "/(\\w{2}/)?image-to-prompt(.*)", // image-to-prompt tool page
   "^/\\w{2}$", // root with locale
   "/(\\w{2}/)?api/coze/upload(.*)", // Coze upload API
+  "/(\\w{2}/)?api/coze/workflow(.*)", // Coze workflow API
 ];
 
 const noNeedProcessRoute = [".*\\.png", ".*\\.jpg", ".*\\.opengraph-image.png"];

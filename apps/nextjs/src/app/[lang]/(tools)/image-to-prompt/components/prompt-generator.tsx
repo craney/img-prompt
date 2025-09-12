@@ -1,9 +1,10 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "@saasfly/ui/button";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@saasfly/ui/select";
 import { cn } from "@saasfly/ui";
+import * as Icons from "@saasfly/ui/icons";
 
 interface PromptGeneratorProps {
   dict: {
@@ -21,6 +22,7 @@ interface PromptGeneratorProps {
   promptLanguage?: string;
   onLanguageChange?: (language: string) => void;
   uploadedImage?: File | null;
+  cozeFileId?: string | null; // 添加cozeFileId属性
 }
 
 const languageOptions = [
@@ -35,10 +37,12 @@ export function PromptGenerator({
   selectedModel = "general", 
   promptLanguage = "english", 
   onLanguageChange, 
-  uploadedImage 
+  uploadedImage,
+  cozeFileId // 接收cozeFileId
 }: PromptGeneratorProps) {
   const [internalLanguage, setInternalLanguage] = useState(promptLanguage);
   const [isGenerating, setIsGenerating] = useState(false);
+  const [generatedPrompt, setGeneratedPrompt] = useState(""); // 添加生成的提示词状态
 
   const currentLanguage = onLanguageChange ? promptLanguage : internalLanguage;
 
@@ -53,17 +57,53 @@ export function PromptGenerator({
       return;
     }
 
+    // 检查是否有cozeFileId
+    if (!cozeFileId) {
+      alert("Image not uploaded to Coze yet");
+      return;
+    }
+
     setIsGenerating(true);
+    setGeneratedPrompt(""); // 清空之前的提示词
     try {
-      // TODO: 实现实际的AI提示词生成逻辑
-      console.log("Generating prompt for model:", selectedModel, "in language:", currentLanguage);
-      await new Promise(resolve => setTimeout(resolve, 2000)); // 模拟API调用
+      // 映射模型类型到promptType
+      const promptTypeMap: Record<string, string> = {
+        "general": "Normal",
+        "flux": "Flux",
+        "midjourney": "Midjourney",
+        "stable-diffusion": "StableDiffusion"
+      };
+      
+      const promptType = promptTypeMap[selectedModel] || "Normal";
+
+      // 调用后端API
+      const response = await fetch("/api/coze/workflow", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ fileId: cozeFileId, promptType }),
+      });
+
+      if (!response.ok) {
+        const error = await response.json();
+        throw new Error(error.error || "Failed to generate prompt");
+      }
+
+      const result = await response.json();
+      setGeneratedPrompt(result.prompt);
     } catch (error) {
       console.error("Error generating prompt:", error);
+      alert(`Error generating prompt: ${error instanceof Error ? error.message : 'Unknown error'}`);
     } finally {
       setIsGenerating(false);
     }
   };
+
+  // 当selectedModel改变时，清空之前生成的提示词
+  useEffect(() => {
+    setGeneratedPrompt("");
+  }, [selectedModel]);
 
   return (
     <div className="mt-12 pt-8 border-t border-gray-200 dark:border-gray-700">
@@ -90,10 +130,10 @@ export function PromptGenerator({
         {/* 中间：生成按钮 */}
         <Button
           onClick={handleGenerate}
-          disabled={isGenerating || !uploadedImage}
+          disabled={isGenerating || !uploadedImage || !cozeFileId}
           className={cn(
             "bg-purple-600 hover:bg-purple-700 text-white px-8 py-2 text-base font-medium",
-            (isGenerating || !uploadedImage) && "opacity-70 cursor-not-allowed"
+            (isGenerating || !uploadedImage || !cozeFileId) && "opacity-70 cursor-not-allowed"
           )}
         >
           {isGenerating ? (
@@ -111,6 +151,20 @@ export function PromptGenerator({
           {dict.version}
         </div>
       </div>
+
+      {/* 显示生成的提示词 */}
+      {generatedPrompt && (
+        <div className="mt-8">
+          <label className="block text-sm font-medium text-foreground mb-2">
+            Generated Prompt:
+          </label>
+          <textarea
+            value={generatedPrompt}
+            readOnly
+            className="min-h-[120px] w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 bg-gray-50 dark:bg-gray-800"
+          />
+        </div>
+      )}
     </div>
   );
 }
