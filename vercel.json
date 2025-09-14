@@ -3,5 +3,7 @@
     "silent": true
   },
   "buildCommand": "turbo run build --filter=@saasfly/nextjs",
-  "installCommand": "bun install"
+  "installCommand": "bun install",
+  "outputDirectory": "apps/nextjs/.next",
+  "framework": "nextjs"
 }
