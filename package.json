@@ -21,7 +21,9 @@
     "test:ui": "playwright test --ui",
     "test:headed": "playwright test --headed",
     "test:debug": "playwright test --debug",
-    "test:report": "playwright show-report"
+    "test:report": "playwright show-report",
+    "postbuild": "./scripts/play-sound.sh",
+    "postbuild:web": "./scripts/play-sound.sh"
   },
   "devDependencies": {
     "@playwright/test": "^1.55.0",
