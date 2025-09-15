@@ -62,11 +62,15 @@ export default async function ImagePromptHomePage({
   return (
     <>
       {/* Hero Section */}
-      <ImagePromptHeroSection dict={dict.imageprompt.hero} />
+      <ImagePromptHeroSection dict={dict.imageprompt.hero} lang={lang} />
       
       {/* Features Grid */}
       <ImagePromptFeaturesGrid 
-        features={dict.imageprompt.features}
+        features={dict.imageprompt.features.map(feature => ({
+          ...feature,
+          // 为图片转提示词功能添加链接
+          href: feature.id === 'image_to_prompt' ? `/${lang}/image-to-prompt` : undefined
+        }))}
         interested={dict.imageprompt.interested}
       />
       

@@ -1,12 +1,14 @@
 "use client";
 
 import * as Icons from "@saasfly/ui/icons";
+import Link from "next/link";
 
 interface Feature {
   id: string;
   title: string;
   description: string;
   icon: string; // 改为字符串类型，运行时动态获取图标
+  href?: string; // 可选的链接地址
 }
 
 interface ImagePromptFeaturesGridProps {
@@ -29,9 +31,10 @@ export function ImagePromptFeaturesGrid({
           const IconComponent = Icons[feature.icon as keyof typeof Icons];
           
           return (
-            <div 
-              key={feature.id} 
-              className="flex flex-col items-center text-center p-6 group hover:scale-105 transition-transform duration-200"
+            <Link 
+              key={feature.id}
+              href={feature.href || '#'}
+              className="flex flex-col items-center text-center p-6 group hover:scale-105 transition-transform duration-200 cursor-pointer"
             >
               {/* 图标圆圈 */}
               <div className="w-16 h-16 rounded-full bg-purple-100 dark:bg-purple-900/20 flex items-center justify-center mb-4 group-hover:bg-purple-200 dark:group-hover:bg-purple-800/30 transition-colors">
@@ -47,7 +50,7 @@ export function ImagePromptFeaturesGrid({
               <p className="text-muted-foreground text-sm leading-relaxed">
                 {feature.description}
               </p>
-            </div>
+            </Link>
           );
         })}
       </div>

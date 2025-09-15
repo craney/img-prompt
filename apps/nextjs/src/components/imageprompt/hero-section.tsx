@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { ColourfulText } from "@saasfly/ui/colorful-text";
 import { Button } from "@saasfly/ui/button";
 
@@ -12,9 +13,12 @@ interface ImagePromptHeroSectionProps {
     cta_primary: string;
     cta_secondary: string;
   };
+  lang: string;
 }
 
-export function ImagePromptHeroSection({ dict }: ImagePromptHeroSectionProps) {
+export function ImagePromptHeroSection({ dict, lang }: ImagePromptHeroSectionProps) {
+  const targetPath = `/${lang}/image-to-prompt`;
+
   return (
     <section className="container pt-20 pb-16">
       <div className="flex flex-col items-center text-center max-w-4xl mx-auto">
@@ -32,19 +36,23 @@ export function ImagePromptHeroSection({ dict }: ImagePromptHeroSectionProps) {
         
         {/* CTA 按钮组 */}
         <div className="flex flex-col sm:flex-row gap-4 mb-16">
-          <Button 
-            size="lg" 
-            className="bg-purple-600 hover:bg-purple-700 text-white px-8 py-3 text-lg rounded-full"
-          >
-            {dict.cta_primary}
-          </Button>
-          <Button 
-            size="lg" 
-            variant="outline" 
-            className="border-purple-200 text-purple-600 hover:bg-purple-50 px-8 py-3 text-lg rounded-full"
-          >
-            {dict.cta_secondary}
-          </Button>
+          <Link href={targetPath} prefetch={true}>
+            <Button 
+              size="lg" 
+              className="bg-purple-600 hover:bg-purple-700 text-white px-8 py-3 text-lg rounded-full w-full"
+            >
+              {dict.cta_primary}
+            </Button>
+          </Link>
+          <Link href={targetPath} prefetch={true}>
+            <Button 
+              size="lg" 
+              variant="outline" 
+              className="border-purple-200 text-purple-600 hover:bg-purple-50 px-8 py-3 text-lg rounded-full w-full"
+            >
+              {dict.cta_secondary}
+            </Button>
+          </Link>
         </div>
       </div>
     </section>
