@@ -16,6 +16,9 @@ bun install
 # Start development server
 bun run dev:web
 
+# Alternative development server (with specific port)
+cd /Users/zhaohe/Documents/workspace/img-prompt/apps/nextjs && PORT=3000 bun run dev
+
 # Build for production
 bun run build
 

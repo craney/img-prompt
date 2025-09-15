@@ -16,9 +16,15 @@
     "typecheck": "turbo typecheck",
     "postinstall": "bun run check-deps",
     "check-deps": "check-dependency-version-consistency .",
-    "gen": "turbo gen --config 'turbo/generators/config.ts'"
+    "gen": "turbo gen --config 'turbo/generators/config.ts'",
+    "test": "playwright test",
+    "test:ui": "playwright test --ui",
+    "test:headed": "playwright test --headed",
+    "test:debug": "playwright test --debug",
+    "test:report": "playwright show-report"
   },
   "devDependencies": {
+    "@playwright/test": "^1.55.0",
     "@turbo/gen": "1.13.3",
     "check-dependency-version-consistency": "4.1.0",
     "prettier": "3.2.5",
@@ -35,7 +41,7 @@
     "packages/*",
     "tooling/*"
   ],
-  "packageManager": "bun@v1.1.10",
+  "packageManager": "bun@1.2.21",
   "dependencies": {
     "caniuse-lite": "^1.0.30001741"
   }

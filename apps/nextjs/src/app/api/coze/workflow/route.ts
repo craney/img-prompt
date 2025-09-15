@@ -19,12 +19,15 @@ function successResponse(data: any) {
 export async function POST(request: NextRequest) {
   try {
     // 1. 获取请求参数
-    const { fileId, promptType } = await request.json();
+    const { fileId, promptType, language } = await request.json();
 
     // 2. 验证参数
     if (!fileId || !promptType) {
       return errorResponse(400, "Missing required parameters: fileId and promptType");
     }
+
+    // 验证语言参数（可选参数，提供默认值）
+    const promptLanguage = language || "english";
 
     // 3. 获取访问令牌
     const accessToken = env.COZE_ACCESS_TOKEN;
@@ -37,7 +40,8 @@ export async function POST(request: NextRequest) {
       workflow_id: "7548376142701658148", // 固定的工作流ID
       parameters: {
         img: { file_id: fileId },
-        promptType: promptType
+        promptType: promptType,
+        lang: promptLanguage
       }
     };
 

@@ -1,0 +1,243 @@
+$ bun with-env next dev
+$ dotenv -e ../../.env.local -- next dev
+  ▲ Next.js 14.2.5
+  - Local:        http://localhost:3000
+
+ ✓ Starting...
+  ▲ Next Devtools 0.2.0
+
+   ▲ Next.js 14.0.4
+   - Local:        http://localhost:12883
+   - Network:      http://0.0.0.0:12883
+
+ ✓ Ready in 2.6s
+ ✓ Ready in 76ms
+ ✓ Compiled /src/middleware in 168ms (245 modules)
+ ○ Compiling /[lang]/image-to-prompt ...
+(node:61337) ExperimentalWarning: Type Stripping is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:61337) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Users/zhaohe/Documents/workspace/img-prompt/tooling/tailwind-config/index.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /Users/zhaohe/Documents/workspace/img-prompt/tooling/tailwind-config/package.json.
+ ✓ Compiled /[lang]/image-to-prompt in 2.9s (5225 modules)
+ ✓ Compiled in 313ms (1867 modules)
+ GET /zh/image-to-prompt 200 in 3320ms
+ ○ Compiling /[lang]/login ...
+ ✓ Compiled /[lang]/login in 994ms (5308 modules)
+ GET /zh/login?from=%2Fzh%2F__next_devtools__%2Fclient 200 in 422ms
+ GET /zh/login?from=%2Fzh%2F.well-known%2Fappspecific%2Fcom.chrome.devtools.json 200 in 1345ms
+ ○ Compiling /api/auth/[...nextauth] ...
+ ✓ Compiled /api/auth/[...nextauth] in 671ms (3656 modules)
+ GET /zh/login?from=%2Fzh%2F__next_devtools__%2Fclient 200 in 634ms
+ GET /api/auth/session 200 in 1250ms
+ GET /api/auth/session 200 in 9ms
+ GET /api/auth/session 200 in 4ms
+ GET /api/auth/session 200 in 3ms
+ GET /api/auth/session 200 in 11ms
+ GET /api/auth/session 200 in 7ms
+ GET /api/auth/session 200 in 4ms
+ GET /api/auth/session 200 in 5ms
+ GET /api/auth/session 200 in 8ms
+ ✓ Compiled /api/coze/upload in 281ms (3662 modules)
+=== Coze API Request Details ===
+URL: https://api.coze.cn/v1/files/upload
+Method: POST
+Access Token Present: true
+Access Token Length: 68
+Access Token: pat_GX4phziPKTiU6acyRgFSqSiWaG8TUV2RauUBXDJ7uM49g3Qz4TR12505Rz9UvMT3
+Headers: {
+  Authorization: 'Bearer pat_GX4phziPKTiU6acyRgFSqSiWaG8TUV2RauUBXDJ7uM49g3Qz4TR12505Rz9UvMT3',
+  'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
+}
+File Details: { name: 'aaaa.png', size: 532557, type: 'image/png' }
+===============================
+Form Data Entries:
+  file: File { name: aaaa.png, size: 532557, type: image/png }
+  purpose: webpage
+=== Coze API Response Details ===
+Status: 200
+Status Text: OK
+Headers: {
+  'access-control-allow-credentials': 'false',
+  'access-control-allow-headers': 'Origin,Content-Type,Content-Length,Authorization,x-tt-env,x-use-ppe,x-use-boe,X-Coze-Connector-ID,X-Coze-Client-User-Agent,X-Coze-Resource-Entity,open-nginx',
+  'access-control-allow-methods': 'POST,GET,PUT,DELETE,OPTIONS',
+  'access-control-allow-origin': '*',
+  'access-control-expose-headers': 'x-tt-logid',
+  connection: 'keep-alive',
+  'content-encoding': 'br',
+  'content-type': 'application/json',
+  date: 'Mon, 15 Sep 2025 13:23:09 GMT',
+  server: 'volc-dcdn',
+  'server-timing': 'inner; dur=1283, cdn-cache;desc=MISS, origin;dur=1520, edge;dur=0, tt_agw; dur=1271',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  'transfer-encoding': 'chunked',
+  vary: 'Accept-Encoding',
+  via: 'n183-136-203-180.nbct04-container.Creative',
+  'x-dsa-origin-status': '200',
+  'x-dsa-trace-id': '1757942588d73d6f204f5438993bfce3cd051a088a',
+  'x-request-ip': '60.176.176.137',
+  'x-tt-logid': '202509152123080AA6FA686E7D32B1551F',
+  'x-tt-trace-host': '01c00ca880429fc93552fa8a5be2c26ddc17e75d72959f8e47c6d0e7a1f12a55bbf1235550015d74a54e0bc3903b23f62a41576f3f94c9a1d4df03aae8a46cc4bbe57ec205c7a964218c2be075b2df295687eeb3b0e9f597a408518a063312319e',
+  'x-tt-trace-id': '00-4d8b249d03010fe46f986f6157ec0000-4d8b249d03010fe4-01',
+  'x-tt-trace-tag': 'id=5'
+}
+================================
+Coze API Response Body: {
+  "code": 0,
+  "data": {
+    "bytes": 532557,
+    "created_at": 1757942589,
+    "file_name": "aaaa.png",
+    "id": "7550305131494309922"
+  },
+  "detail": {
+    "logid": "202509152123080AA6FA686E7D32B1551F"
+  },
+  "msg": ""
+}
+ POST /api/coze/upload 200 in 2017ms
+ ✓ Compiled /api/coze/workflow in 187ms (3664 modules)
+=== Coze Workflow Request Details ===
+URL: https://api.coze.cn/v1/workflow/run
+Method: POST
+Access Token Present: true
+Access Token Length: 68
+Workflow Parameters: {
+  "workflow_id": "7548376142701658148",
+  "parameters": {
+    "img": {
+      "file_id": "7550305131494309922"
+    },
+    "promptType": "Normal",
+    "lang": "chinese"
+  }
+}
+Headers: {
+  Authorization: 'Bearer pat_GX4phziPKTiU6acyRgFSqSiWaG8TUV2RauUBXDJ7uM49g3Qz4TR12505Rz9UvMT3',
+  'Content-Type': 'application/json',
+  'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
+}
+================================
+=== Coze Workflow Response Details ===
+Status: 200
+Status Text: OK
+Headers: {
+  'access-control-allow-credentials': 'false',
+  'access-control-allow-headers': 'Origin,Content-Type,Content-Length,Authorization,x-tt-env,x-use-ppe,x-use-boe,X-Coze-Connector-ID,X-Coze-Client-User-Agent,X-Coze-Resource-Entity,rpc-persist-mock-traffic-enable,open-nginx',
+  'access-control-allow-methods': 'POST,GET,PUT,DELETE,OPTIONS',
+  'access-control-allow-origin': '*',
+  connection: 'keep-alive',
+  'content-encoding': 'br',
+  'content-type': 'application/json; charset=utf-8',
+  date: 'Mon, 15 Sep 2025 13:23:22 GMT',
+  server: 'volc-dcdn',
+  'server-timing': 'inner; dur=5784, cdn-cache;desc=MISS, origin;dur=5830, edge;dur=0',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  'transfer-encoding': 'chunked',
+  vary: 'Accept-Encoding',
+  via: 'n183-136-203-168.nbct04-container.Creative',
+  'x-dsa-origin-status': '200',
+  'x-dsa-trace-id': '175794259647511b7a25aea44a7343fbcd82382ed1',
+  'x-request-ip': '60.176.176.137',
+  'x-tt-logid': '202509152123164C9F107CCE137D8E4D1D',
+  'x-tt-trace-host': '01c00ca880429fc93552fa8a5be2c26ddcc2de89fe7d7c1dea1db4e323e6f3a92b0b76b992ae253876b2feb48013c511aba096b2b6098d3a74c8c03467cf2e101f9f82384f3c830598d00cbd58fb4f6105695317f404589810c0efa3045f8d2a35',
+  'x-tt-trace-id': '00-4d8b440103010bbb81eb714e4af00000-4d8b440103010bbb-01',
+  'x-tt-trace-tag': 'id=5'
+}
+================================
+Coze Workflow API Response Body: {
+  "data": "{\"prompt\":\"卡通风格会议室场景，蓝色长方形会议桌周围坐六个人，有人记笔记、捂耳朵、托腮；桌上有绿色杯子、笔记本、笔、平板；右侧屏幕显示黄色灯泡与画笔图案。\"}",
+  "debug_url": "https://www.coze.cn/work_flow?execute_id=7550305958124666895&space_id=7463112645076353087&workflow_id=7548376142701658148&execute_mode=2",
+  "usage": {
+    "input_count": 1654,
+    "token_count": 1826,
+    "output_count": 172
+  },
+  "detail": {
+    "logid": "202509152123164C9F107CCE137D8E4D1D"
+  },
+  "code": 0,
+  "msg": ""
+}
+ POST /api/coze/workflow 200 in 6108ms
+=== Coze API Request Details ===
+URL: https://api.coze.cn/v1/files/upload
+Method: POST
+Access Token Present: true
+Access Token Length: 68
+Access Token: pat_GX4phziPKTiU6acyRgFSqSiWaG8TUV2RauUBXDJ7uM49g3Qz4TR12505Rz9UvMT3
+Headers: {
+  Authorization: 'Bearer pat_GX4phziPKTiU6acyRgFSqSiWaG8TUV2RauUBXDJ7uM49g3Qz4TR12505Rz9UvMT3',
+  'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
+}
+File Details: { name: '1757334198.png', size: 96141, type: 'image/png' }
+===============================
+Form Data Entries:
+  file: File { name: 1757334198.png, size: 96141, type: image/png }
+  purpose: webpage
+=== Coze API Response Details ===
+Status: 200
+Status Text: OK
+Headers: {
+  'access-control-allow-credentials': 'false',
+  'access-control-allow-headers': 'Origin,Content-Type,Content-Length,Authorization,x-tt-env,x-use-ppe,x-use-boe,X-Coze-Connector-ID,X-Coze-Client-User-Agent,X-Coze-Resource-Entity,open-nginx',
+  'access-control-allow-methods': 'POST,GET,PUT,DELETE,OPTIONS',
+  'access-control-allow-origin': '*',
+  'access-control-expose-headers': 'x-tt-logid',
+  connection: 'keep-alive',
+  'content-encoding': 'br',
+  'content-type': 'application/json',
+  date: 'Mon, 15 Sep 2025 13:23:36 GMT',
+  server: 'volc-dcdn',
+  'server-timing': 'inner; dur=823, cdn-cache;desc=MISS, origin;dur=945, edge;dur=0, tt_agw; dur=814',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  'transfer-encoding': 'chunked',
+  vary: 'Accept-Encoding',
+  via: 'n183-136-203-171.nbct04-container.Creative',
+  'x-dsa-origin-status': '200',
+  'x-dsa-trace-id': '17579426159f78928652b16b8b0aee03e27cb52f57',
+  'x-request-ip': '60.176.176.137',
+  'x-tt-logid': '20250915212335F72B8D633BE797559F14',
+  'x-tt-trace-host': '01c00ca880429fc93552fa8a5be2c26ddc5568780961a11065e984544bf5530b05e739454dd2c80883c455ee10d1d78d03aeb86eaa68229ce8e8b46bf926becbf9a40db5907a4e0e1ce596cb1054bfceb66e5ad669c441735b2fc73e439fbd4858',
+  'x-tt-trace-id': '00-4d8b8f0203010f77ed2f114ad6770000-4d8b8f0203010f77-01',
+  'x-tt-trace-tag': 'id=5'
+}
+================================
+Coze API Response Body: {
+  "code": 0,
+  "data": {
+    "bytes": 96141,
+    "created_at": 1757942616,
+    "file_name": "1757334198.png",
+    "id": "7550305027056402474"
+  },
+  "detail": {
+    "logid": "20250915212335F72B8D633BE797559F14"
+  },
+  "msg": ""
+}
+ POST /api/coze/upload 200 in 1075ms
+=== Coze Workflow Request Details ===
+URL: https://api.coze.cn/v1/workflow/run
+Method: POST
+Access Token Present: true
+Access Token Length: 68
+Workflow Parameters: {
+  "workflow_id": "7548376142701658148",
+  "parameters": {
+    "img": {
+      "file_id": "7550305027056402474"
+    },
+    "promptType": "Midjourney",
+    "lang": "chinese"
+  }
+}
+Headers: {
+  Authorization: 'Bearer pat_GX4phziPKTiU6acyRgFSqSiWaG8TUV2RauUBXDJ7uM49g3Qz4TR12505Rz9UvMT3',
+  'Content-Type': 'application/json',
+  'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
+}
+================================
+error: script "with-env" was terminated by signal SIGTERM (Polite quit request)
+error: script "dev" was terminated by signal SIGTERM (Polite quit request)
+[?25h

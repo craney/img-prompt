@@ -82,7 +82,7 @@ export function PromptGenerator({
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ fileId: cozeFileId, promptType }),
+        body: JSON.stringify({ fileId: cozeFileId, promptType, language: currentLanguage }),
       });
 
       if (!response.ok) {
