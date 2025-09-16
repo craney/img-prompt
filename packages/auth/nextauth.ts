@@ -38,6 +38,22 @@ declare module "next-auth/jwt" {
   }
 }
 
+// 检查数据库连接
+const checkDatabaseConnection = async () => {
+  try {
+    // 尝试执行一个简单的查询来测试连接
+    await db.selectFrom('User').select('id').limit(1).execute();
+    console.log('Database connection test successful');
+  } catch (error) {
+    console.error('Database connection test failed:', error);
+  }
+};
+
+// 如果在服务器环境中，检查数据库连接
+if (typeof window === 'undefined') {
+  checkDatabaseConnection().catch(console.error);
+}
+
 // 动态构建 providers 数组，只包含有有效配置的 provider
 export const authOptions: NextAuthOptions = {
   session: {

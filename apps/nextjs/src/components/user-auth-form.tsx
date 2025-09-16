@@ -47,13 +47,16 @@ export function UserAuthForm({
   const [isGoogleLoading, setIsGoogleLoading] = React.useState<boolean>(false);
   const searchParams = useSearchParams();
 
+  // 获取回调URL
+  const callbackUrl = searchParams?.get("from") ?? `/${lang}`;
+
   async function onSubmit(data: FormData) {
     setIsLoading(true);
 
     const signInResult = await signIn("email", {
       email: data.email.toLowerCase(),
       redirect: false,
-      callbackUrl: searchParams?.get("from") ?? `/${lang}/dashboard`,
+      callbackUrl: callbackUrl,
     }).catch((error) => {
       console.error("Error during sign in:", error);
     });
@@ -123,7 +126,7 @@ export function UserAuthForm({
         className={cn(buttonVariants({ variant: "outline" }))}
         onClick={() => {
           setIsGitHubLoading(true);
-          signIn("github").catch((error) => {
+          signIn("github", { callbackUrl }).catch((error) => {
             console.error("GitHub signIn error:", error);
           });
         }}
@@ -141,7 +144,7 @@ export function UserAuthForm({
         className={cn(buttonVariants({ variant: "outline" }))}
         onClick={() => {
           setIsGoogleLoading(true);
-          signIn("google").catch((error) => {
+          signIn("google", { callbackUrl }).catch((error) => {
             console.error("Google signIn error:", error);
           });
         }}

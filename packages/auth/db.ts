@@ -1,17 +1,16 @@
-import { createClient } from "@vercel/postgres";
+import { createPool } from "@vercel/postgres";
 import { Kysely, PostgresDialect } from "kysely";
-import type { GeneratedAlways } from "kysely";
 
 interface Database {
   User: {
-    id: GeneratedAlways<string>;
+    id: string;
     name: string | null;
     email: string;
     emailVerified: Date | null;
     image: string | null;
   };
   Account: {
-    id: GeneratedAlways<string>;
+    id: string;
     userId: string;
     type: string;
     provider: string;
@@ -25,7 +24,7 @@ interface Database {
     session_state: string | null;
   };
   Session: {
-    id: GeneratedAlways<string>;
+    id: string;
     userId: string;
     sessionToken: string;
     expires: Date;
@@ -37,13 +36,25 @@ interface Database {
   };
 }
 
-// Create Kysely instance with Vercel Postgres client
-const client = createClient({
-  connectionString: process.env.POSTGRES_URL,
-});
+// Create Kysely instance with Vercel Postgres pool
+let pool;
+
+try {
+  pool = createPool({
+    connectionString: process.env.POSTGRES_URL,
+  });
+  
+  // Test the connection
+  if (!process.env.POSTGRES_URL) {
+    console.warn('POSTGRES_URL environment variable is not set');
+  }
+} catch (error) {
+  console.error('Failed to create PostgreSQL pool:', error);
+  throw error;
+}
 
 export const db = new Kysely<Database>({
   dialect: new PostgresDialect({
-    pool: client as any,
+    pool: pool as any,
   }),
 });
