@@ -8,6 +8,8 @@ import { i18n } from "~/config/i18n-config";
 
 const publicRoute = [
   "/(\\w{2}/)?signin(.*)",
+  "/(\\w{2}/)?login(.*)",
+  "/(\\w{2}/)?register(.*)",
   "/(\\w{2}/)?terms(.*)",
   "/(\\w{2}/)?privacy(.*)",
   "/(\\w{2}/)?docs(.*)",
@@ -21,7 +23,7 @@ const publicRoute = [
 
 const noNeedProcessRoute = [".*\\.png", ".*\\.jpg", ".*\\.opengraph-image.png"];
 
-const noRedirectRoute = ["/api(.*)", "/trpc(.*)", "/admin"];
+const noRedirectRoute = ["/api/auth(.*)", "/api(.*)", "/trpc(.*)", "/admin"];
 
 function getLocale(request: NextRequest): string | undefined {
   // Negotiator expects plain object so we need to transform headers
@@ -38,6 +40,11 @@ function getLocale(request: NextRequest): string | undefined {
 function isNoRedirect(request: NextRequest): boolean {
   const pathname = request.nextUrl.pathname;
   return noRedirectRoute.some((route) => new RegExp(route).test(pathname));
+}
+
+function isNextAuthRoute(request: NextRequest): boolean {
+  const pathname = request.nextUrl.pathname;
+  return pathname.startsWith('/api/auth/');
 }
 
 function isPublicPage(request: NextRequest): boolean {
@@ -105,18 +112,28 @@ export default async function middleware(request: NextRequest) {
   if (isNoNeedProcess(request)) {
     return null;
   }
+
   const isWebhooksRoute = request.nextUrl.pathname.startsWith("/api/webhooks/");
   if (isWebhooksRoute) {
     return NextResponse.next();
   }
+
+  // Let NextAuth handle its own routes
+  if (isNextAuthRoute(request)) {
+    return NextResponse.next();
+  }
+
   const pathname = request.nextUrl.pathname;
   // Check if there is any supported locale in the pathname
   const pathnameIsMissingLocale = i18n.locales.every(
     (locale) =>
       !pathname.startsWith(`/${locale}/`) && pathname !== `/${locale}`,
   );
+  // Don't add locale to API routes or NextAuth routes
+  const shouldAddLocale = !isNoRedirect(request) && !isNextAuthRoute(request) && pathnameIsMissingLocale;
+
   // Redirect if there is no locale
-  if (!isNoRedirect(request) && pathnameIsMissingLocale) {
+  if (shouldAddLocale) {
     const locale = getLocale(request);
     return NextResponse.redirect(
       new URL(

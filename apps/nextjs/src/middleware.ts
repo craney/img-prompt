@@ -1,12 +1,10 @@
-import middleware from "./utils/nextauth";
+// Temporarily disable middleware to test OAuth flow
+import { NextResponse } from 'next/server';
+
+export function middleware() {
+  return NextResponse.next();
+}
 
 export const config = {
-  matcher: [
-    "/((?!.*\\..*|_next).*)",
-    "/",
-    "/(api|trpc)(.*)",
-    "/((?!_next|[^?]*\\.(?:html?|css|js(?!on)|jpe?g|webp|png|gif|svg|ttf|woff2?|ico|csv|docx?|xlsx?|zip|webmanifest)).*)"
-  ],
+  matcher: [],
 };
-
-export default middleware;

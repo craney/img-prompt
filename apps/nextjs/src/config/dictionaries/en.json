@@ -82,10 +82,9 @@
     "signin_title": "Enter your email to log into your account",
     "singup_title": "Don't have an account? Sign up now.",
     "signin_email": "Log in with Email",
+    "signin_google": "Sign in with Google",
+    "signin_github": "Sign in with Github",
     "signin_others": "Or continue with",
-    "signup": "Sign up",
-    "privacy": "only your email and profile picture will be stored.",
-    "signup_github": "Sign Up with Github",
     "": ""
   },
   "common": {

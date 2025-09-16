@@ -82,10 +82,9 @@
     "signin_title": "アカウントにログインするためのメールを入力してください",
     "singup_title": "アカウントがまだないですか？今すぐサインアップ。",
     "signin_email": "メールでログイン",
+    "signin_google": "Googleでログイン",
+    "signin_github": "Githubでログイン",
     "signin_others": "または続ける",
-    "signup": "サインアップ",
-    "privacy": "メールアドレスとプロフィール画像のみが保存されます。",
-    "signup_github": "Githubでサインアップ",
     "": ""
   },
   "common": {

@@ -48,7 +48,22 @@ yarn-error.log*
 yarn.lock
 package-lock.json
 
+# IDE and editor files
 .idea/
-
-.env
 .qoder/
+
+# Environment files
+.env
+.env.local
+
+# Test files and debug artifacts
+tests/screenshots/
+tests/test-*.js
+tests/test-*/
+tests/cookies.txt
+tests/dev.log
+tests/next-dev.log
+test-results
+playwright-report/
+*.log
+apps/*.log

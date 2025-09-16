@@ -82,10 +82,9 @@
     "signin_title": "계정에 로그인하려면 이메일을 입력하세요",
     "singup_title": "계정이 없으신가요? 지금 가입하세요.",
     "signin_email": "이메일로 로그인",
+    "signin_google": "Google로 로그인",
+    "signin_github": "Github로 로그인",
     "signin_others": "또는 다음으로 계속",
-    "signup": "가입하기",
-    "privacy": "이메일과 프로필 사진만 저장됩니다.",
-    "signup_github": "Github으로 가입하기",
     "": ""
   },
   "common": {

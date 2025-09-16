@@ -1,7 +1,9 @@
 import { getServerSession, NextAuthOptions, User } from "next-auth";
 import { KyselyAdapter } from "@auth/kysely-adapter";
 import GitHubProvider from "next-auth/providers/github";
+import GoogleProvider from "next-auth/providers/google";
 import EmailProvider from "next-auth/providers/email";
+import { createOAuth2GoogleProvider } from "./google-provider-oauth2";
 
 // 延迟导入 resend，只在需要时才加载
 import type { GetServerSidePropsContext, NextApiRequest, NextApiResponse } from "next";
@@ -42,9 +44,26 @@ export const authOptions: NextAuthOptions = {
     strategy: "jwt",
   },
   pages: {
-    signIn: "/login",
+    signIn: "/en/login",
   },
   adapter: KyselyAdapter(db) as any,
+  useSecureCookies: false,
+  logger: {
+    error: (code, metadata) => {
+      console.error('NextAuth Error:', code, metadata);
+      if (metadata && 'error' in metadata && metadata.error) {
+        const error = metadata.error as Error;
+        console.error('NextAuth Error Details:', error);
+        console.error('NextAuth Error Stack:', error.stack);
+      }
+    },
+    warn: (code) => {
+      console.warn('NextAuth Warning:', code);
+    },
+    debug: (code, metadata) => {
+      console.debug('NextAuth Debug:', code, metadata);
+    },
+  },
 
   providers: [
     // 只在提供了 GitHub 客户端 ID 和密钥时添加 GitHubProvider
@@ -57,6 +76,11 @@ export const authOptions: NextAuthOptions = {
           }),
         ]
       : []),
+    // 动态创建 Google Provider，如果配置无效则返回 null
+    ...(function() {
+      const provider = createOAuth2GoogleProvider();
+      return provider ? [provider] : [];
+    })(),
     // 只在提供了 RESEND_FROM 和 RESEND_API_KEY 时添加 EmailProvider
     ...(env.RESEND_FROM && env.RESEND_API_KEY
       ? [
@@ -154,7 +178,7 @@ export const authOptions: NextAuthOptions = {
       };
     },
   },
-  debug: (env.IS_DEBUG as string) === "true",
+  debug: true,
 };
 
 // Use it in server contexts

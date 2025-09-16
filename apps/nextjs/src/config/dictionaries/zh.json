@@ -82,10 +82,9 @@
     "signin_title": "输入您的电子邮件以登录您的账户",
     "singup_title": "还没有账户？立即注册。",
     "signin_email": "用电子邮件登录",
+    "signin_google": "使用 Google 登录",
+    "signin_github": "使用 Github 登录",
     "signin_others": "或者继续使用",
-    "signup": "注册",
-    "privacy": "只有您的电子邮件和头像会被存储。",
-    "signup_github": "使用 Github 注册",
     "": ""
   },
   "common": {
