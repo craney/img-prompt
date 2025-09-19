@@ -57,12 +57,7 @@ package-lock.json
 .env.local
 
 # Test files and debug artifacts
-tests/screenshots/
-tests/test-*.js
-tests/test-*/
-tests/cookies.txt
-tests/dev.log
-tests/next-dev.log
+tests/
 test-results
 playwright-report/
 *.log
