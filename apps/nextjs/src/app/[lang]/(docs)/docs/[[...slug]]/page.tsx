@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access */
 
 import { notFound } from "next/navigation";
+import { Suspense } from "react";
 
 import { Mdx } from "~/components/content/mdx-components";
 import { DashboardTableOfContents } from "~/components/content/toc";
@@ -93,7 +94,9 @@ export default async function DocPage({ params }: DocPageProps) {
     <main className="relative py-6 lg:gap-10 lg:py-10 xl:grid xl:grid-cols-[1fr_300px]">
       <div className="mx-auto w-full min-w-0">
         <DocsPageHeader heading={doc.title} text={doc.description} />
-        <Mdx code={doc.body.code} />
+        <Suspense fallback={<div>Loading content...</div>}>
+          <Mdx code={doc.body.code} />
+        </Suspense>
         <hr className="my-4 md:my-6" />
         <DocsPager doc={doc} />
       </div>

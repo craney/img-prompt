@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Suspense } from "react";
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
@@ -54,7 +54,9 @@ export default async function LoginPage({
             {dict.login.signin_title}
           </p>
         </div>
-        <UserAuthForm lang={lang} dict={dict.login} />
+        <Suspense fallback={<div>Loading...</div>}>
+            <UserAuthForm lang={lang} dict={dict.login} />
+          </Suspense>
         {/* <p className="px-8 text-center text-sm text-muted-foreground">
           <Link
             href={`/${lang}/register`}

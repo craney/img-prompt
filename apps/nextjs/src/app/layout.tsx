@@ -7,6 +7,7 @@ import "~/styles/globals.css";
 import { NextDevtoolsProvider } from "@next-devtools/core";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import { Suspense } from "react";
 
 import { cn } from "@saasfly/ui";
 import { Toaster } from "@saasfly/ui/toaster";
@@ -102,7 +103,9 @@ export default function RootLayout({
             <NextDevtoolsProvider>{children}</NextDevtoolsProvider>
             <Analytics />
             <SpeedInsights />
-            <BaiduAnalytics baiduAnalyticsId={env.NEXT_PUBLIC_BAIDU_ANALYTICS_ID || ''} />
+            <Suspense fallback={null}>
+              <BaiduAnalytics baiduAnalyticsId={env.NEXT_PUBLIC_BAIDU_ANALYTICS_ID || ''} />
+            </Suspense>
             <Toaster />
             <TailwindIndicator />
           </SessionProvider>

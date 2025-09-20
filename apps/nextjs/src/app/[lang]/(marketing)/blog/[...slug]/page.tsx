@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 import { allAuthors, allPosts } from "contentlayer/generated";
+import { Suspense } from "react";
 
 import { Mdx } from "~/components/content/mdx-components";
 
@@ -155,7 +156,9 @@ export default function PostPage({ params }: PostPageProps) {
           priority
         />
       )}
-      <Mdx code={post.body.code} />
+      <Suspense fallback={<div>Loading content...</div>}>
+          <Mdx code={post.body.code} />
+        </Suspense>
       <hr className="mt-12" />
       <div className="flex justify-center py-6 lg:py-10">
         <Link href="/blog" className={cn(buttonVariants({ variant: "ghost" }))}>
