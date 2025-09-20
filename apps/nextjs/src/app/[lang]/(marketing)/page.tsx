@@ -4,6 +4,8 @@ import { getDictionary } from "~/lib/get-dictionary";
 import { ImagePromptHeroSection } from "~/components/imageprompt/hero-section";
 import { ImagePromptFeaturesGrid } from "~/components/imageprompt/features-grid";
 import { ImagePromptToolsSuite } from "~/components/imageprompt/tools-suite";
+import { SEOAdvantages } from "~/components/imageprompt/seo-advantages";
+import { UseCases } from "~/components/imageprompt/use-cases";
 
 import type { Locale } from "~/config/i18n-config";
 
@@ -17,7 +19,7 @@ export async function generateMetadata({
   return {
     title: dict.imageprompt.meta.title,
     description: dict.imageprompt.meta.description,
-    keywords: ['AI art', 'image prompt', 'AI generator', 'prompt engineering'],
+    keywords: ['image to prompt', 'image to prompt generator', 'image prompt', 'image prompt generator', 'prompt generator', 'AI art', 'AI generator', 'prompt engineering'],
     openGraph: {
       title: dict.imageprompt.meta.title,
       description: dict.imageprompt.meta.description,
@@ -76,6 +78,12 @@ export default async function ImagePromptHomePage({
       
       {/* Tools Suite */}
       <ImagePromptToolsSuite dict={dict.imageprompt.tools} />
+
+      {/* SEO Advantages */}
+      <SEOAdvantages dict={dict.imageprompt.seoAdvantages} />
+
+      {/* Use Cases and Technical Features */}
+      <UseCases dict={dict.imageprompt} />
     </>
   );
 }

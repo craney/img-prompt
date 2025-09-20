@@ -1,192 +1,196 @@
 # CLAUDE.md
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+本文件为 Claude Code (claude.ai/code) 在此代码仓库中工作时提供指导。
 
-## Project Overview
+## 项目概述
 
-This is **ImagePrompt.He** - an image-to-prompt generator built on the Saasfly SaaS boilerplate. It's a Next.js 14 monorepo with TypeScript, featuring internationalization (i18n), authentication, and AI-powered image processing capabilities.
+这是 **ImagePrompt.He** - 一个基于 Saasfly SaaS 样板构建的图像到提示词生成器。这是一个使用 TypeScript 的 Next.js 14 单体仓库，具有国际化（i18n）、身份验证和 AI 驱动的图像处理功能。
 
-## Key Development Commands
+## 重要提示
 
-### Core Development
+**请使用中文进行所有交流和输出**
+
+## 关键开发命令
+
+### 核心开发
 ```bash
-# Install dependencies (uses Bun as package manager)
+# 安装依赖（使用 Bun 作为包管理器）
 bun install
 
-# Start development server
+# 启动开发服务器
 bun run dev:web
 
-# Alternative development server (with specific port)
+# 备用开发服务器（指定端口）
 cd /Users/zhaohe/Documents/workspace/img-prompt/apps/nextjs && PORT=3000 bun run dev
 
-# Build for production
+# 构建生产版本
 bun run build
 
-# Start production server
+# 启动生产服务器
 bun run start
 ```
 
-### Code Quality
+### 代码质量
 ```bash
-# Run all checks (lint, typecheck, format)
+# 运行所有检查（lint, typecheck, format）
 bun run lint
 bun run typecheck
 bun run format:fix
 
-# Check dependency version consistency
+# 检查依赖版本一致性
 bun run check-deps
 ```
 
-### Database
+### 数据库
 ```bash
-# Push database schema (requires .env.local with POSTGRES_URL)
+# 推送数据库架构（需要 .env.local 中的 POSTGRES_URL）
 bun db:push
 ```
 
-## Architecture Overview
+## 架构概述
 
-### Monorepo Structure
-- **`apps/nextjs/`** - Main Next.js application with App Router
-- **`packages/`** - Shared packages (api, auth, db, ui, stripe, common)
-- **`tooling/`** - Shared configurations (eslint, prettier, tailwind, typescript)
+### 单体仓库结构
+- **`apps/nextjs/`** - 使用 App Router 的主要 Next.js 应用程序
+- **`packages/`** - 共享包（api, auth, db, ui, stripe, common）
+- **`tooling/`** - 共享配置（eslint, prettier, tailwind, typescript）
 
-### Key Technologies
-- **Next.js 14** with App Router and Server Components
-- **TypeScript** with strict configuration
-- **Tailwind CSS** for styling
-- **tRPC** for type-safe API routes
-- **NextAuth.js** for authentication (migrated from Clerk)
-- **PostgreSQL** with Kysely query builder
-- **i18n** with support for EN, ZH, JA, KO
-- **Coze API** for AI-powered image-to-prompt generation
+### 核心技术
+- **Next.js 14** 使用 App Router 和 Server Components
+- **TypeScript** 严格配置
+- **Tailwind CSS** 用于样式
+- **tRPC** 用于类型安全的 API 路由
+- **NextAuth.js** 用于身份验证（从 Clerk 迁移）
+- **PostgreSQL** 使用 Kysely 查询构建器
+- **i18n** 支持 EN, ZH, JA, KO
+- **Coze API** 用于 AI 驱动的图像到提示词生成
 
-### Environment Configuration
-- **`apps/nextjs/src/env.mjs`** - Environment variables validation with Zod
-- **`.env.local`** - Local environment variables (copy from .env.example)
-- **Required env vars**: POSTGRES_URL, NEXTAUTH_SECRET, GITHUB_CLIENT_ID/SECRET, STRIPE_API_KEY, COZE_ACCESS_TOKEN
+### 环境配置
+- **`apps/nextjs/src/env.mjs`** - 使用 Zod 进行环境变量验证
+- **`.env.local`** - 本地环境变量（从 .env.example 复制）
+- **必需的环境变量**: POSTGRES_URL, NEXTAUTH_SECRET, GITHUB_CLIENT_ID/SECRET, STRIPE_API_KEY, COZE_ACCESS_TOKEN
 
-## Core Application Structure
+## 核心应用程序结构
 
-### App Router Structure
+### App Router 结构
 ```
 apps/nextjs/src/app/[lang]/
-├── (auth)/           # Authentication pages (login, register)
-├── (dashboard)/      # User dashboard and billing
-├── (docs)/           # Documentation pages
-├── (editor)/         # Editor functionality
-├── (marketing)/     # Marketing pages including homepage
-├── (tools)/          # Tool pages including image-to-prompt
-└── admin/           # Admin dashboard
+├── (auth)/           # 身份验证页面（登录、注册）
+├── (dashboard)/      # 用户仪表板和计费
+├── (docs)/           # 文档页面
+├── (editor)/         # 编辑器功能
+├── (marketing)/     # 营销页面包括主页
+├── (tools)/          # 工具页面包括图像到提示词
+└── admin/           # 管理员仪表板
 ```
 
-### Image-to-Prompt Feature
-The core feature is located in `apps/nextjs/src/app/[lang]/(tools)/image-to-prompt/`:
+### 图像到提示词功能
+核心功能位于 `apps/nextjs/src/app/[lang]/(tools)/image-to-prompt/`：
 
-**Key Components:**
-- `page.tsx` - Main page with server-side metadata
-- `client.tsx` - Client component managing state and UI
-- `components/` - Feature-specific components:
-  - `image-upload-section.tsx` - File upload with drag-and-drop
-  - `image-preview-section.tsx` - Image preview
-  - `model-selection.tsx` - AI model selection (General, Flux, Midjourney, Stable Diffusion)
-  - `prompt-generator.tsx` - Prompt generation controls
+**关键组件：**
+- `page.tsx` - 带有服务器端元数据的主页面
+- `client.tsx` - 管理状态和 UI 的客户端组件
+- `components/` - 功能特定组件：
+  - `image-upload-section.tsx` - 拖放文件上传
+  - `image-preview-section.tsx` - 图像预览
+  - `model-selection.tsx` - AI 模型选择（通用、Flux、Midjourney、Stable Diffusion）
+  - `prompt-generator.tsx` - 提示词生成控件
 
-**API Routes:**
-- `/api/coze/upload` - File upload to Coze platform
-- `/api/coze/workflow` - Coze workflow execution for prompt generation
+**API 路由：**
+- `/api/coze/upload` - 文件上传到 Coze 平台
+- `/api/coze/workflow` - Coze 工作流执行用于提示词生成
 
-### Authentication System
-- **NextAuth.js** with GitHub OAuth and Email Magic Link providers
-- **KyselyAdapter** for database integration
-- **tRPC context** handles authentication via JWT tokens
-- **Public routes**: Tools accessible without login, admin requires authentication
+### 身份验证系统
+- **NextAuth.js** 使用 GitHub OAuth 和电子邮件魔法链接提供程序
+- **KyselyAdapter** 用于数据库集成
+- **tRPC 上下文** 通过 JWT 令牌处理身份验证
+- **公共路由**: 工具无需登录即可访问，管理员需要身份验证
 
-### Database Schema
-- **PostgreSQL** with Prisma schema management
-- **User management** via NextAuth.js
-- **Subscription handling** with Stripe integration
+### 数据库架构
+- **PostgreSQL** 使用 Prisma 架构管理
+- **用户管理** 通过 NextAuth.js
+- **订阅处理** 与 Stripe 集成
 
-## Development Guidelines
+## 开发指南
 
-### Component Development
-- Use **server components** by default for better performance
-- **Client components** only when interactivity is needed
-- Import components from `@saasfly/ui` package for consistency
-- Follow existing component patterns and naming conventions
+### 组件开发
+- 默认使用 **服务器组件** 以获得更好的性能
+- 仅在需要交互性时使用 **客户端组件**
+- 从 `@saasfly/ui` 包导入组件以保持一致性
+- 遵循现有的组件模式和命名约定
 
-### Internationalization
-- Content in `apps/nextjs/src/config/dictionaries/` (en.json, zh.json, ja.json, ko.json)
-- Use `getDictionary(lang)` function for content access
-- Dictionary structure: nested objects for feature organization
-- ImagePrompt content under `dict.imageprompt` namespace
+### 国际化
+- 内容位于 `apps/nextjs/src/config/dictionaries/` (en.json, zh.json, ja.json, ko.json)
+- 使用 `getDictionary(lang)` 函数访问内容
+- 字典结构：用于功能组织的嵌套对象
+- ImagePrompt 内容位于 `dict.imageprompt` 命名空间下
 
-### Styling
-- **Tailwind CSS** with custom config in `tooling/tailwind-config/`
-- **UI components** from `@saasfly/ui` package
-- **Color scheme**: Purple-based theme for brand consistency
-- **Responsive design**: Mobile-first with breakpoints
+### 样式
+- **Tailwind CSS** 使用 `tooling/tailwind-config/` 中的自定义配置
+- **UI 组件** 来自 `@saasfly/ui` 包
+- **配色方案**: 基于紫色的主题以保持品牌一致性
+- **响应式设计**: 移动优先，具有断点
 
-### API Development
-- **tRPC** for internal type-safe APIs
-- **Next.js API routes** for external integrations (Coze)
-- **Environment validation** using `@t3-oss/env-nextjs`
-- **Error handling** with proper HTTP status codes
+### API 开发
+- **tRPC** 用于内部类型安全的 API
+- **Next.js API 路由** 用于外部集成（Coze）
+- 使用 `@t3-oss/env-nextjs` 进行 **环境验证**
+- 使用适当的 HTTP 状态代码进行 **错误处理**
 
-### State Management
-- **Zustand** for client-side state
-- **React Query** for server state and caching
-- **Local state** with useState for component-specific data
+### 状态管理
+- **Zustand** 用于客户端状态
+- **React Query** 用于服务器状态和缓存
+- **本地状态** 使用 useState 处理组件特定数据
 
-## Important Implementation Notes
+## 重要实现说明
 
-### Coze API Integration
-- **File upload**: `/api/coze/upload` → `https://api.coze.cn/v1/files/upload`
-- **Workflow execution**: `/api/coze/workflow` → `https://api.coze.cn/v1/workflow/run`
-- **Authentication**: Bearer token from `COZE_ACCESS_TOKEN` env var
-- **Parameters**: Model selection maps to promptType (Normal, Flux, Midjourney, StableDiffusion)
+### Coze API 集成
+- **文件上传**: `/api/coze/upload` → `https://api.coze.cn/v1/files/upload`
+- **工作流执行**: `/api/coze/workflow` → `https://api.coze.cn/v1/workflow/run`
+- **身份验证**: 来自 `COZE_ACCESS_TOKEN` 环境变量的 Bearer 令牌
+- **参数**: 模型选择映射到 promptType（通用、Flux、Midjourney、Stable Diffusion）
 
-### File Upload Validation
-- **Supported formats**: PNG, JPG, WEBP
-- **Max size**: 5MB
-- **Validation**: Client-side + server-side checks
+### 文件上传验证
+- **支持的格式**: PNG, JPG, WEBP
+- **最大大小**: 5MB
+- **验证**: 客户端 + 服务器端检查
 
-### Admin Dashboard
-- **Access**: `/admin/dashboard` (requires ADMIN_EMAIL env var)
-- **Features**: Static pages only (alpha stage)
-- **Security**: Email-based access control
+### 管理员仪表板
+- **访问**: `/admin/dashboard`（需要 ADMIN_EMAIL 环境变量）
+- **功能**: 仅静态页面（alpha 阶段）
+- **安全性**: 基于电子邮件的访问控制
 
-## Testing and Deployment
+## 测试和部署
 
-### Testing Commands
+### 测试命令
 ```bash
-# Run type checking
+# 运行类型检查
 bun run typecheck
 
-# Run linting
+# 运行代码检查
 bun run lint
 
-# Check dependency consistency
+# 检查依赖一致性
 bun run check-deps
 ```
 
-### Deployment
-- **Vercel** configuration in `vercel.json`
-- **Build command**: `turbo run build --filter=@saasfly/nextjs`
-- **Install command**: `bun install`
-- **Output directory**: `apps/nextjs/.next`
+### 部署
+- **Vercel** 配置在 `vercel.json` 中
+- **构建命令**: `turbo run build --filter=@saasfly/nextjs`
+- **安装命令**: `bun install`
+- **输出目录**: `apps/nextjs/.next`
 
-### Environment Setup
-1. Copy `.env.example` to `.env.local`
-2. Set up PostgreSQL database connection
-3. Configure authentication providers (GitHub, Email)
-4. Set up Stripe keys for payments
-5. Configure Coze API access token
+### 环境设置
+1. 将 `.env.example` 复制到 `.env.local`
+2. 设置 PostgreSQL 数据库连接
+3. 配置身份验证提供程序（GitHub、电子邮件）
+4. 设置支付密钥用于 Stripe
+5. 配置 Coze API 访问令牌
 
-## Key Files to Understand
+## 需要理解的关键文件
 
-- **`turbo.json`** - Build pipeline and workspace configuration
-- **`apps/nextjs/src/env.mjs`** - Environment variables schema
-- **`packages/auth/nextauth.ts`** - Authentication configuration
-- **`packages/api/src/trpc.ts`** - tRPC context and setup
-- **`apps/nextjs/src/middleware.ts`** - Route protection and i18n
-- **`packages/db/prisma/schema.prisma`** - Database schema definition
+- **`turbo.json`** - 构建管道和工作区配置
+- **`apps/nextjs/src/env.mjs`** - 环境变量架构
+- **`packages/auth/nextauth.ts`** - 身份验证配置
+- **`packages/api/src/trpc.ts`** - tRPC 上下文和设置
+- **`apps/nextjs/src/middleware.ts`** - 路由保护和国际化
+- **`packages/db/prisma/schema.prisma`** - 数据库架构定义

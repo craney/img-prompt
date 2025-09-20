@@ -125,46 +125,82 @@
   },
   "imageprompt": {
     "meta": {
-      "title": "ImagePrompt.org - Create Better AI Art",
-      "description": "Inspire ideas, Enhance image prompt, Create masterpieces"
+      "title": "Image Prompt Generator - Free Image to Prompt Generator Tool",
+      "description": "Professional image to prompt generator that converts images to optimized prompts for AI art generation. Create stunning AI artwork with our free prompt generator supporting Flux, Midjourney, and Stable Diffusion."
     },
     "hero": {
-      "title_prefix": "Create Better AI Art with",
-      "title_highlight": "Image Prompt",
-      "title_suffix": "",
-      "subtitle": "Inspire ideas, Enhance image prompt, Create masterpieces",
+      "title_prefix": "Best Free",
+      "title_highlight": "Image to Prompt Generator",
+      "title_suffix": "for AI Art",
+      "subtitle": "Convert images to optimized prompts with our professional image prompt generator. Create stunning AI artwork for Flux, Midjourney, and Stable Diffusion in seconds.",
       "cta_primary": "Try it now!",
       "cta_secondary": "Tutorials"
     },
     "features": [
       {
         "id": "image_to_prompt",
-        "title": "Image to Prompt",
-        "description": "Convert Image to Prompt to generate your own image",
+        "title": "Image to Prompt Generator",
+        "description": "Professional image to prompt generator that converts images to optimized prompts for AI art generation. Free prompt generator for all your creative needs.",
         "icon": "Image"
       },
       {
         "id": "magic_enhance",
-        "title": "Magic Enhance",
-        "description": "Transform simple text into detailed, descriptive image prompt",
+        "title": "Prompt Enhancer",
+        "description": "Transform simple text into detailed, descriptive image prompt. Our prompt generator enhances your ideas for better AI artwork creation.",
         "icon": "Wand2"
       },
       {
         "id": "ai_describe",
-        "title": "AI Describe Image",
-        "description": "Let AI help you understand and analyze any image in detail",
+        "title": "AI Image Analysis",
+        "description": "Let AI help you understand and analyze any image in detail. Perfect image to prompt analysis for your prompt generator workflow.",
         "icon": "Eye"
       },
       {
         "id": "ai_generator",
-        "title": "AI Image Generator",
-        "description": "Transform your image prompt into stunning visuals with AI-powered generation",
+        "title": "AI Art Generator",
+        "description": "Transform your image prompt into stunning visuals with AI-powered generation. Complete image prompt generator solution for artists.",
         "icon": "Sparkles"
       }
     ],
     "tools": {
-      "title": "AI Powered Image Prompt Tools",
-      "subtitle": "A complete suite of AI tools covering every aspect of your image creation journey"
+      "title": "Complete Image to Prompt Generator Suite",
+      "subtitle": "Professional AI tools suite for image prompt generation. Free prompt generator supporting all major AI art models including Flux, Midjourney, and Stable Diffusion."
+    },
+    "seoAdvantages": {
+      "title": "Why Choose Our Image to Prompt Generator",
+      "subtitle": "Discover the advantages of using our professional image prompt generator for AI art creation. Optimize your workflow with the best free prompt generator tool.",
+      "advantages": [
+        {
+          "title": "Professional Image to Prompt Conversion",
+          "description": "Our advanced AI technology ensures accurate image to prompt generation, creating optimized prompts for all major AI art models. The perfect prompt generator for artists and creators.",
+          "keywords": ["image to prompt", "prompt generator", "image prompt generator"]
+        },
+        {
+          "title": "Multi-Model Support",
+          "description": "Generate prompts optimized for Flux, Midjourney, Stable Diffusion, and more. Our image prompt generator supports all leading AI art platforms for maximum versatility.",
+          "keywords": ["image prompt generator", "prompt generator", "image to prompt"]
+        },
+        {
+          "title": "Free and Accessible",
+          "description": "Access our powerful image to prompt generator completely free. No hidden fees or subscriptions. The best prompt generator tool for everyone.",
+          "keywords": ["free prompt generator", "image to prompt", "image prompt generator"]
+        },
+        {
+          "title": "Fast and Efficient",
+          "description": "Convert images to prompts in seconds with our optimized prompt generator. Streamline your AI art creation workflow with instant results.",
+          "keywords": ["image to prompt", "prompt generator", "image prompt generator"]
+        },
+        {
+          "title": "High-Quality Output",
+          "description": "Our image prompt generator produces detailed, descriptive prompts that result in stunning AI artwork. Professional-grade prompt generation for all skill levels.",
+          "keywords": ["image prompt generator", "prompt generator", "image to prompt"]
+        },
+        {
+          "title": "User-Friendly Interface",
+          "description": "Intuitive design makes our image to prompt generator easy to use. No technical expertise required to create professional prompts with our prompt generator.",
+          "keywords": ["image to prompt generator", "image prompt generator", "prompt generator"]
+        }
+      ]
     },
     "interested": {
       "prefix": "You may be interested in:",
@@ -231,6 +267,84 @@
           "korean": "한국어"
         }
       }
+    },
+    "useCases": {
+      "title": "Image to Prompt Generator Use Cases",
+      "subtitle": "Discover endless possibilities with our professional image to prompt generator. Perfect for artists, designers, and creators looking to enhance their AI art workflow.",
+      "scenarios": [
+        {
+          "title": "Digital Art Creation",
+          "description": "Transform reference images into detailed prompts for stunning digital artwork. Our image prompt generator helps artists create consistent style across their AI art collections.",
+          "icon": "Palette",
+          "keywords": ["digital art", "image to prompt", "prompt generator"]
+        },
+        {
+          "title": "Content Creation",
+          "description": "Generate compelling visual content for social media, blogs, and marketing materials. Use our free prompt generator to create unique AI artwork that stands out.",
+          "icon": "Megaphone",
+          "keywords": ["content creation", "image prompt generator", "AI art"]
+        },
+        {
+          "title": "Design Inspiration",
+          "description": "Convert mood boards and inspiration images into actionable prompts. Our image to prompt generator bridges the gap between concept and creation.",
+          "icon": "Lightbulb",
+          "keywords": ["design inspiration", "image to prompt generator", "prompt generator"]
+        },
+        {
+          "title": "Photography Enhancement",
+          "description": "Transform photos into artistic AI creations with detailed prompts. Our image prompt generator preserves key elements while adding artistic flair.",
+          "icon": "Camera",
+          "keywords": ["photography", "image prompt generator", "AI art"]
+        },
+        {
+          "title": "Education & Learning",
+          "description": "Create educational visuals and learning materials. Our free prompt generator helps educators and students generate relevant AI artwork for teaching.",
+          "icon": "GraduationCap",
+          "keywords": ["education", "image to prompt", "prompt generator"]
+        },
+        {
+          "title": "Game Development",
+          "description": "Generate concept art and game assets from reference images. Our image to prompt generator accelerates the game development workflow.",
+          "icon": "Gamepad2",
+          "keywords": ["game development", "image prompt generator", "concept art"]
+        }
+      ]
+    },
+    "technical": {
+      "title": "Advanced Image Prompt Generator Technology",
+      "subtitle": "Powered by cutting-edge AI technology, our image to prompt generator delivers superior performance and accuracy for all your prompt generation needs.",
+      "features": [
+        {
+          "title": "Multi-Language Support",
+          "description": "Generate prompts in English, Chinese, Japanese, and Korean. Our image prompt generator serves a global community of creators and artists.",
+          "keywords": ["multilingual", "image to prompt generator", "global"]
+        },
+        {
+          "title": "AI Model Optimization",
+          "description": "Optimized prompts for Flux, Midjourney, Stable Diffusion, and more. Our prompt generator ensures compatibility with all major AI art platforms.",
+          "keywords": ["AI models", "image prompt generator", "optimization"]
+        },
+        {
+          "title": "Secure & Private",
+          "description": "Your images are processed securely with privacy protection. Our free prompt generator ensures your creative work remains confidential.",
+          "keywords": ["security", "image to prompt generator", "privacy"]
+        },
+        {
+          "title": "High-Speed Processing",
+          "description": "Fast image analysis and prompt generation. Our image prompt generator delivers results in seconds, not minutes.",
+          "keywords": ["speed", "prompt generator", "efficiency"]
+        },
+        {
+          "title": "Continuous Improvement",
+          "description": "Regular updates and improvements to our AI algorithms. Our image prompt generator evolves with the latest advancements in AI technology.",
+          "keywords": ["updates", "image prompt generator", "improvement"]
+        },
+        {
+          "title": "API Integration",
+          "description": "Developer-friendly API for seamless integration into your workflow. Our prompt generator can be embedded into your existing tools and platforms.",
+          "keywords": ["API", "image to prompt generator", "integration"]
+        }
+      ]
     }
   }
 }

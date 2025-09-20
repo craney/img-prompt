@@ -100,18 +100,7 @@ export function NavBar({
               params={{ lang: `${lang}` }}
               dict={dropdown}
             />
-          ) : (
-            <Button
-              className="px-3"
-              variant="default"
-              size="sm"
-              onClick={signInModal.onOpen}
-            >
-              {typeof marketing.signup === "string"
-                ? marketing.signup
-                : "Default Signup Text"}
-            </Button>
-          )}
+          ) : null}
         </div>
       </div>
     </header>

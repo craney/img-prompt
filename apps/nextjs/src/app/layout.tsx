@@ -14,8 +14,10 @@ import { Toaster } from "@saasfly/ui/toaster";
 import { SessionProvider } from "~/components/session-provider";
 import { TailwindIndicator } from "~/components/tailwind-indicator";
 import { ThemeProvider } from "~/components/theme-provider";
+import { BaiduAnalytics } from "~/components/analytics/baidu-analytics";
 import { i18n } from "~/config/i18n-config";
 import { siteConfig } from "~/config/site";
+import { env } from "~/env.mjs";
 
 // import { Suspense } from "react";
 // import { PostHogPageview } from "~/config/providers";
@@ -100,6 +102,7 @@ export default function RootLayout({
             <NextDevtoolsProvider>{children}</NextDevtoolsProvider>
             <Analytics />
             <SpeedInsights />
+            <BaiduAnalytics baiduAnalyticsId={env.NEXT_PUBLIC_BAIDU_ANALYTICS_ID || ''} />
             <Toaster />
             <TailwindIndicator />
           </SessionProvider>
