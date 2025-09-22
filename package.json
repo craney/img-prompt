@@ -45,6 +45,8 @@
   ],
   "packageManager": "bun@1.2.21",
   "dependencies": {
-    "caniuse-lite": "^1.0.30001741"
+    "@types/node": "^24.5.2",
+    "caniuse-lite": "^1.0.30001741",
+    "openid-client": "5.6.1"
   }
 }

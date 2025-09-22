@@ -17,8 +17,11 @@
     "https-proxy-agent": "^7.0.6",
     "next": "14.2.5",
     "next-auth": "4.24.7",
+    "openid-client": "5.6.1",
+    "proxy-agent": "^6.5.0",
     "react": "18.3.1",
     "react-dom": "18.3.1",
+    "tunnel": "^0.0.6",
     "zod": "3.22.4"
   },
   "devDependencies": {
